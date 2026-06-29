@@ -1,0 +1,6 @@
+vendor/
+.env
+/node_modules
+/public/images/placeholder.svg
+.DS_Store
+.phpunit.result.cache

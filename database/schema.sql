@@ -1,0 +1,34 @@
+-- Esquema mínimo para Cortia
+
+CREATE TABLE IF NOT EXISTS categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  slug VARCHAR(120) NOT NULL UNIQUE,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  category_id INT NOT NULL,
+  name VARCHAR(150) NOT NULL,
+  slug VARCHAR(160) NOT NULL UNIQUE,
+  description TEXT,
+  price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  width INT NULL,
+  height INT NULL,
+  material VARCHAR(100) NULL,
+  sku VARCHAR(80) NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS product_images (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  product_id INT NOT NULL,
+  path VARCHAR(255) NOT NULL,
+  alt VARCHAR(150) NULL,
+  is_main TINYINT(1) DEFAULT 0,
+  sort_order INT DEFAULT 0,
+  FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
