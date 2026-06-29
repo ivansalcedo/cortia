@@ -1,12 +1,5 @@
 <?php
-use Leaf\Route;
+// routes.php - (optional) use a router library or Leaf routes here.
+// Kept for reference; index.php uses inline routing.
 
-// Rutas principales
-Route::get('/', 'App\\Controllers\\HomeController@index');
-Route::get('/categoria/{slug}', 'App\\Controllers\\CategoryController@show');
-Route::get('/producto/{slug}', 'App\\Controllers\\ProductController@show');
-
-// Ruta estática para contacto (placeholder)
-Route::get('/contacto', function(){
-    echo "<h2>Contacto</h2><p>Formulario de contacto pendiente de implementación.</p>";
-});
+// Example if you integrate Leaf or another router later.
